@@ -1,0 +1,144 @@
+<!--<div class="container my-2">
+    <div class="row bg-white mxs-1">
+        <h1>Experiencia Laboral</h1>
+        <div class="col-lg-12">
+            <ul class="list-group d-flex justify-content-between align-items-start" *ngFor="let exp of exps">
+                <li class="list-group-item my-2 border border-2 row">
+                    
+                    <h1 class="d-inline col-6">{{exp.position}} -</h1>
+                    <h3 class="d-inline col-5"> (Acá se calcula los años con datestart y end Años)</h3>
+                    <button class="btn btn-success  col-1 me-auto float-left">editar</button>
+                    <h6 class="col-12">
+                        {{exp.description}}
+                    </h6>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>-->
+<div class="container">
+  <div class="mxs-1 bg-white p-3">
+    <h1 class="bg-white p-3">
+      Experiencias
+      <button
+        type="button"
+        class="btn btn-outline-success"
+        data-bs-toggle="modal"
+        data-bs-target="#formAdd"
+      >
+        <i class="bi bi-plus fs-5"></i>
+      </button>
+    </h1>
+    <!-- Button trigger modal -->
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="formAdd"
+      tabindex="-1"
+      aria-labelledby="formAddExp"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title mx-auto" id="formAddExp">
+              Agregar Experiencia
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <app-form-add></app-form-add>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal fin -->
+    <div class="row mxs-1 my-2 border-top border-2" *ngFor="let exp of exps">
+      <div class="col-lg-10">
+        <figure>
+          <blockquote class="blockquote">
+            <h3 *ngIf="!edit" class="card-title">
+              {{ exp.position }}
+            </h3>
+          </blockquote>
+          <figcaption *ngIf="!edit" class="blockquote-footer">Años</figcaption>
+        </figure>
+        <input
+          *ngIf="edit"
+          [value]="exp.position"
+          type="text"
+          name=""
+          id=""
+          class="form-control my-2"
+          placeholder="Posición"
+        />
+        <p *ngIf="!edit">{{ exp.description }}</p>
+        <textarea
+          *ngIf="edit"
+          [value]="exp.description"
+          class="form-control my-2"
+          name=""
+          id=""
+          placeholder="Descripción"
+        ></textarea>
+        <div *ngIf="edit" class="input-group my-2">
+          <label for="dateStart" class="input-group-text">Fecha Inicio</label>
+          <input class="form-control" type="date" name="editDateStart" id="editDateStart">
+          <label for="dateEnd" class="input-group-text">Fecha Fin</label>
+          <input class="form-control" type="date" name="editDateEnd" id="editDateEnd">
+        </div>
+      </div>
+      <div class="col-lg-2">
+        <button
+          *ngIf="!edit"
+          (click)="canEditExperience()"
+          type="button"
+          class="btn btn-light mx-auto"
+          data-bs-placement="top"
+          data-bs-toggle="tooltip"
+          title="Edit"
+        >
+          <i class="bi bi-pen text-dark"></i>
+        </button>
+        <button
+          *ngIf="edit"
+          (click)="canEditExperience()"
+          type="button"
+          class="btn btn-light mx-auto"
+          data-bs-placement="top"
+          data-bs-toggle="tooltip"
+          title="Save"
+        >
+          <i class="bi bi-check-square text-success"></i>
+        </button>
+        <button
+          *ngIf="edit"
+          (click)="canEditExperience()"
+          type="button"
+          class="btn btn-light mx-auto"
+          data-bs-placement="top"
+          data-bs-toggle="tooltip"
+          title="Cancel"
+        >
+          <i class="bi bi-x-lg text-danger"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

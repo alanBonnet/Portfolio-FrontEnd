@@ -1,0 +1,109 @@
+<!-- Perfil Inicio -->
+<div class="container">
+  <div class="row bg-white my-2 mxs-1 p-2">
+    <div class="col-xd-12 col-sm-1">
+      <img
+        *ngIf="!edit"
+        [src]="autoImgPhoto()"
+        id="perfilPhoto"
+        alt=""
+        [class]="claseImgPhoto"
+      />
+    </div>
+    <div class="col-xs-12 col-sm-3 perfil-nom pt-lg-4 pt-xl-5">
+      <h5
+        *ngIf="!edit"
+        class="fw-bold pt-5 pt-md-3 mt-md-4 pt-lg-4 mt-lg-4 pt-xl-5 mt-xl-5"
+        id="perfilNombre"
+      >
+        {{ perfil.firstname }} {{ perfil.lastname }}
+        <button (click)="editProfile()" class="btn btn-light" type="button">
+          <i class="bi bi-pen"></i>
+        </button>
+      </h5>
+      <div *ngIf="edit" class="input-group fw-bold py-1">
+        <input type="text" [value]="perfil.imgPhoto" class="form-control" />
+        <button
+          (click)="editProfile()"
+          class="btn btn-light border border-2"
+          type="button"
+        >
+          <i class="bi bi-x-circle fs-4 text-danger"></i>
+        </button>
+        <button
+          (click)="editProfile()"
+          class="btn btn-light border border-2"
+          type="button"
+        >
+          <i class="bi bi-check-lg text-success"></i>
+        </button>
+      </div>
+      <div *ngIf="edit" class="input-group fw-bold">
+        <input type="text" [value]="perfil.firstname" class="form-control" />
+        <input type="text" [value]="perfil.lastname" class="form-control" />
+        <button
+          (click)="editProfile()"
+          class="btn btn-light border border-2"
+          type="button"
+        >
+          <i class="bi bi-x-circle fs-4 text-danger"></i>
+        </button>
+        <button
+          (click)="editProfile()"
+          class="btn btn-light border border-2"
+          type="button"
+        >
+          <i class="bi bi-check-lg text-success"></i>
+        </button>
+      </div>
+      <p *ngIf="!edit" class="">{{ perfil.profession }}</p>
+      <div *ngIf="edit" class="input-group fw-bold py-1">
+        <input type="text" [value]="perfil.profession" class="form-control" />
+        <button
+          (click)="editProfile()"
+          class="btn btn-light border border-2"
+          type="button"
+        >
+          <i class="bi bi-x-circle fs-4 text-danger"></i>
+        </button>
+        <button
+          (click)="editProfile()"
+          class="btn btn-light border border-2"
+          type="button"
+        >
+          <i class="bi bi-check-lg text-success"></i>
+        </button>
+      </div>
+    </div>
+    <div class="col-12 col-xs-12 col-sm-12 col-md-8 col-lg-8 text-center">
+      <span>
+        <h1>Acerca de mí</h1>
+        <p *ngIf="!edit">{{ perfil.aboutMe }}</p>
+        <div *ngIf="edit" class="input-group fw-bold py-1">
+          <textarea
+            [value]="perfil.aboutMe"
+            name=""
+            id=""
+            class="form-control"
+            rows="5"
+          ></textarea>
+          <button
+            (click)="editProfile()"
+            class="btn btn-light border border-2"
+            type="button"
+          >
+            <i class="bi bi-x-circle fs-4 text-danger"></i>
+          </button>
+          <button
+            (click)="editProfile()"
+            class="btn btn-light border border-2"
+            type="button"
+          >
+            <i class="bi bi-check-lg text-success"></i>
+          </button>
+        </div>
+      </span>
+    </div>
+  </div>
+</div>
+<!-- Perfil Final -->
